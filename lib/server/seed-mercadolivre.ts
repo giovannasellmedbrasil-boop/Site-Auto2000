@@ -3,18 +3,17 @@ import { vehicleSlug } from "@/lib/utils";
 
 // Veículos importados dos anúncios PÚBLICOS e ativos da loja no Mercado
 // Livre (https://www.mercadolivre.com.br/pagina/auto2000veiculos), última
-// ressincronização em 2026-09-22: 5 anúncios que saíram do ar foram
-// removidos (Chevrolet Spin, BMW X1, Fiat Fastback, Jeep Compass e Toyota
-// Corolla XEi antigos — alguns foram reanunciados com um novo ID de
-// anúncio, tratados aqui como entradas novas) e 8 anúncios novos foram
-// adicionados (Toyota Corolla GLi, BMW X1, Volkswagen Golf, Renault Kwid,
-// Fiat Uno, Jeep Compass, Toyota Corolla XEi e Chevrolet Spin). Toda marca/
-// modelo/versão/ano/km/preço/cor/combustível/câmbio/carroceria/final de
-// placa/motor/potência/equipamentos/descrição e as URLs de fotos abaixo
-// vieram da própria página do anúncio (dados estruturados schema.org/
-// Vehicle + tabela de especificações do anúncio) — nada foi inventado.
-// Campos não informados pelo anunciante (ex: porta-malas em alguns
-// modelos) ficam `null`.
+// ressincronização em 2026-10-01: o anúncio antigo do Volkswagen Golf saiu
+// do ar e foi reanunciado com um novo ID (tratado aqui como entrada nova) e
+// 2 anúncios genuinamente novos entraram (Fiat Punto e Fiat Fastback —
+// Fastback já tinha sido removido daqui em 2026-09-22 por ter saído do ar
+// naquela época, agora está de volta com outro anúncio). Toda marca/modelo/
+// versão/ano/km/preço/cor/combustível/câmbio/carroceria/final de placa/
+// motor/potência/equipamentos/descrição e as URLs de fotos abaixo vieram da
+// própria página do anúncio (dados estruturados schema.org/Vehicle +
+// tabela de especificações do anúncio) — nada foi inventado. Campos não
+// informados pelo anunciante (ex: porta-malas em alguns modelos) ficam
+// `null`.
 //
 // Isto é uma IMPORTAÇÃO PONTUAL (rodada manualmente, ver
 // scripts/mercadolivre-import), não uma sincronização automática — se o
@@ -668,64 +667,6 @@ const rawVehicles: RawMlVehicle[] = [
     ]
   },
   {
-    "mercadoLivreId": "MLB7685605422",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7685605422-volkswagen-golf-14-tsi-comfortline-5p-manual-",
-    "brand": "Volkswagen",
-    "model": "Golf",
-    "version": "1.4 Tsi Comfortline 5p Manual",
-    "bodyType": "HATCH",
-    "manufactureYear": 2015,
-    "modelYear": 2015,
-    "mileageKm": 73600,
-    "price": 78990,
-    "transmission": "MANUAL",
-    "fuel": "GASOLINE",
-    "color": "Preto",
-    "plateEnding": "5",
-    "doors": 5,
-    "engine": "1.4",
-    "powerHp": 140,
-    "trunkLiters": null,
-    "features": [
-      "AM/FM",
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Ar-condicionado",
-      "Bluetooth",
-      "Com preço negociável",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Porta copos",
-      "Sensor de estacionamento",
-      "Tração ASR"
-    ],
-    "description": "Farol e grade do golf GTI rodas aro 18 com 4 pneus novos 100%Este Volkswagen Golf 2015 1.4 TSI Comfortline 5 portas combina visual discreto na cor preta com proposta equilibrada para uso diário e viagens. O formato hatch favorece manobras em cidade e oferece um conjunto pensado para quem valoriza dirigibilidade e praticidade.O conjunto mecânico traz motor 1.4 a gasolina com 140 cv, câmbio manual de 6 marchas e tração dianteira. A direção elétrica contribui para respostas leves no uso urbano, enquanto o consumo médio em estrada de 13,3 km/l ajuda a manter a rotina mais eficiente.Na segurança, o modelo reúne freios ABS, controle de estabilidade, controle de tração ASR e airbags frontais, laterais dianteiros e de cortina. A configuração para 5 ocupantes, com banco traseiro retrátil, também favorece quem precisa alternar entre pessoas e bagagens com praticidade.Entre os itens de conforto e conveniência, há ar-condicionado, Bluetooth, rádio AM/FM, leitor de MP3, cartão SD, computador de bordo, sensor de estacionamento, faróis de neblina, vidros elétricos dianteiros e traseiros, retrovisores com ajuste elétrico e banco do motorista com regulagem de altura. O sistema de áudio não conta com comando remoto no volante e não há GPS integrado.Com 5 portas, entre-eixos de 2630 mm, tanque de 50 litros e medidas que equilibram espaço interno e agilidade, o Golf atende bem a quem procura um hatch completo para deslocamentos urbanos, estrada e uso familiar. Os 73.600 km informados ajudam a situar a quilometragem do veículo para uma avaliação objetiva.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_919250-MLB118066558909_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_761868-MLB116557048274_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_753047-MLB116556577126_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_779107-MLB118065290763_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_659012-MLB118065143327_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_639470-MLB118065790733_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_973651-MLB116556577150_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_826290-MLB118065790735_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_796556-MLB118066558863_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_624774-MLB116557045456_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_987261-MLB118065290787_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_968108-MLB118065202967_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_856745-MLB118065202965_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_857657-MLB118065172235_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_943301-MLB116557045476_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_686084-MLB116557336572_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_702621-MLB116557336566_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_962192-MLB118065290753_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_938996-MLB116557045490_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_884162-MLB118065172263_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp"
-    ]
-  },
-  {
     "mercadoLivreId": "MLB7685730612",
     "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7685730612-renault-kwid-10-12v-zen-sce-5p-",
     "brand": "Renault",
@@ -1001,6 +942,163 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_860539-MLB116562034024_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_777956-MLB116561501796_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_947319-MLB116561501800_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp"
+    ]
+  },
+  {
+    "mercadoLivreId": "MLB5291874709",
+    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5291874709-volkswagen-golf-14-tsi-comfortline-5p-manual-",
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "version": "1.4 Tsi Comfortline 5p Manual",
+    "bodyType": "HATCH",
+    "manufactureYear": 2015,
+    "modelYear": 2015,
+    "mileageKm": 73000,
+    "price": 78990,
+    "transmission": "MANUAL",
+    "fuel": "GASOLINE",
+    "color": "Preto",
+    "plateEnding": "5",
+    "doors": 5,
+    "engine": "1.4",
+    "powerHp": 140,
+    "trunkLiters": null,
+    "features": [
+      "AM/FM",
+      "Airbag para motorista e passageiro",
+      "Alarme",
+      "Ar-condicionado",
+      "Bluetooth",
+      "Com preço negociável",
+      "Computador de bordo",
+      "Controle de estabilidade",
+      "Freios ABS",
+      "Leitor de MP3",
+      "Porta copos",
+      "Sensor de estacionamento",
+      "Tração ASR"
+    ],
+    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Volkswagen Golf 2015 1.4 TSI Comfortline 5 portas combina perfil hatch com proposta equilibrada para uso diário e viagens. A carroceria preta reforça um visual discreto, enquanto o conjunto mecânico de 140 cv com câmbio manual de 6 marchas favorece respostas ágeis e condução envolvente.Com tração dianteira, direção elétrica e motor a gasolina, o modelo entrega comportamento estável e boa eficiência para diferentes rotinas. O consumo médio de estrada de 13,3 km/l é um dado útil para quem valoriza economia em trajetos mais longos. As dimensões de 4.255 mm de comprimento, 1.799 mm de largura e entre-eixos de 2.630 mm ajudam a equilibrar presença em via pública e facilidade de manobra.",
+    "photos": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_631533-MLB116763843226_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_772874-MLB118255421141_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_949245-MLB118255066795_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_958566-MLB116706336400_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_915008-MLB118255185901_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_758458-MLB118255066821_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_635302-MLB116706222152_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_679312-MLB118255066823_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_830770-MLB118255275725_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_781004-MLB118255096331_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_600978-MLB118255450563_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_732328-MLB118255421197_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_887369-MLB116706336452_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_773660-MLB118255275747_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_871010-MLB118255450583_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_674978-MLB118255007127_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_756969-MLB118255096377_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_611450-MLB118255096387_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_951361-MLB118255096393_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_888817-MLB118255275781_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp"
+    ]
+  },
+  {
+    "mercadoLivreId": "MLB5303963243",
+    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5303963243-fiat-punto-14-elx-flex-5p-",
+    "brand": "Fiat",
+    "model": "Punto",
+    "version": "1.4 Elx Flex 5p",
+    "bodyType": "HATCH",
+    "manufactureYear": 2008,
+    "modelYear": 2008,
+    "mileageKm": 205000,
+    "price": 30990,
+    "transmission": "MANUAL",
+    "fuel": "FLEX",
+    "color": "Prateado",
+    "plateEnding": "5",
+    "doors": 5,
+    "engine": "1.4",
+    "powerHp": 85,
+    "trunkLiters": null,
+    "features": [
+      "Ar-condicionado",
+      "Com preço negociável",
+      "Computador de bordo",
+      "Porta copos"
+    ],
+    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Fiat Punto 2008 na versão 1.4 ELX Flex 5 portas é um hatch pensado para quem procura um modelo compacto, prático e com boa presença visual na cor prateada. Com capacidade para 5 ocupantes, ele atende bem ao uso diário, deslocamentos urbanos e rotinas que pedem agilidade sem abrir mão de conforto básico.A motorização 1.4 flex, com câmbio manual de 5 velocidades e tração dianteira, entrega condução direta e equilibrada para o dia a dia. A direção hidráulica contribui para manobras mais leves, enquanto a potência de 85 hp e o consumo médio urbano de 12,9 km/l ajudam a compor um conjunto funcional para circulação na cidade.",
+    "photos": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_671937-MLB118384273159_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_621008-MLB116827871618_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_880332-MLB118384624155_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_766195-MLB118384273057_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_669113-MLB116828698022_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_761039-MLB118384508071_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_837989-MLB118384186515_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_987592-MLB116828698040_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_803099-MLB116828048326_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_901693-MLB118384273091_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_958426-MLB118383894611_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_800632-MLB116828667952_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_667002-MLB116828698078_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_690471-MLB118384273119_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_941950-MLB116828048362_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_889381-MLB118384916631_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_614842-MLB116828698110_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_729797-MLB116827900652_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_695425-MLB118384916649_092026-F-fiat-punto-14-elx-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_791605-MLB116827871622_092026-F-fiat-punto-14-elx-flex-5p.webp"
+    ]
+  },
+  {
+    "mercadoLivreId": "MLB7702687784",
+    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7702687784-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p-",
+    "brand": "Fiat",
+    "model": "FASTBACK",
+    "version": "1.0 Tributo 125 Turbo 200 Flex Aut. 5P",
+    "bodyType": "SUV",
+    "manufactureYear": 2025,
+    "modelYear": 2025,
+    "mileageKm": 45000,
+    "price": 112690,
+    "transmission": "AUTOMATIC",
+    "fuel": "FLEX",
+    "color": "Cinza",
+    "plateEnding": "5",
+    "doors": 5,
+    "engine": "1.0",
+    "powerHp": 125,
+    "trunkLiters": null,
+    "features": [
+      "Ar-condicionado",
+      "Controle de estabilidade",
+      "Freios ABS",
+      "Tração ASR"
+    ],
+    "description": "O Fiat Fastback 2025 na versão Tributo 1.0 Turbo Automático reúne o perfil de um SUV com linhas modernas e posição de condução elevada. É um modelo pensado para quem procura conforto no dia a dia e presença visual marcante sem abrir mão de dirigibilidade prática.A motorização 1.0 turbo flex entrega 125 cv e trabalha com gasolina ou álcool, oferecendo versatilidade para diferentes rotinas de uso. A transmissão automática de 7 velocidades contribui para uma condução mais suave, enquanto a direção elétrica ajuda nas manobras e na utilização em cidade.O conjunto de segurança inclui freios ABS, controle de estabilidade e controle de tração ASR, recursos que ampliam a confiança ao volante em diferentes condições de rodagem. A tração dianteira favorece o uso urbano e rodoviário com respostas previsíveis e boa eficiência.Com 5 portas e espaço para 5 ocupantes, o Fastback se adapta bem a famílias e a quem precisa de mais praticidade no transporte cotidiano. O porta-malas e o porte de SUV tornam o modelo interessante para compromissos urbanos, deslocamentos de trabalho e viagens curtas com mais conforto.Entre as medidas informadas, o veículo tem 4.427 mm de comprimento, 1.774 mm de largura, 1.545 mm de altura e 2.533 mm de entre-eixos, dimensões que ajudam a equilibrar presença externa e aproveitamento interno. O tanque de 47 litros também favorece uma rotina com menos paradas para abastecimento.Com 45.000 km rodados, este Fastback 2025 combina motor turbo, câmbio automático, ar-condicionado e conjunto eletrônico de assistência para quem valoriza um SUV compacto com proposta completa. É uma escolha coerente para uso diário, deslocamentos urbanos e viagens em família.",
+    "photos": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_807230-MLB118318987777_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_989402-MLB118258119329_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_747134-MLB118258440663_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_978511-MLB118258119341_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_890351-MLB118258353997_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_648717-MLB118258354003_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_743774-MLB116708317106_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_918713-MLB118257970929_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_670772-MLB116708346418_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_955602-MLB118257941161_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_936390-MLB118258354027_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_771238-MLB116708436138_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_837150-MLB118257911323_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_802374-MLB118258119373_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_894752-MLB118258470699_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_780048-MLB116708523312_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_934739-MLB116708436152_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_635187-MLB116708317156_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_928795-MLB118258294741_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_725085-MLB118258530177_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_731536-MLB118258294749_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp"
     ]
   }
 ];
