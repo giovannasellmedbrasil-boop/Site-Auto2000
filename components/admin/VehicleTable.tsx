@@ -23,8 +23,13 @@ export function VehicleTable({ vehicles }: { vehicles: Vehicle[] }) {
   async function handleDelete(id: string, label: string) {
     if (!confirm(`Remover "${label}" do estoque? Esta ação não pode ser desfeita.`)) return;
     setDeletingId(id);
-    await fetch(`/api/vehicles/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/vehicles/${id}`, { method: "DELETE" });
     setDeletingId(null);
+    if (!res.ok) {
+      const data = await res.json().catch(() => null);
+      alert(data?.error ?? "Não foi possível excluir este veículo.");
+      return;
+    }
     router.refresh();
   }
 

@@ -62,7 +62,15 @@ export async function DELETE(_request: Request, { params }: { params: Promise<{ 
   if (!session) return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
 
   const { id } = await params;
-  const ok = await deleteVehicle(id);
-  if (!ok) return NextResponse.json({ error: "Veículo não encontrado" }, { status: 404 });
+  const result = await deleteVehicle(id);
+  if (!result.ok) {
+    if (result.reason === "linked_to_sale") {
+      return NextResponse.json(
+        { error: "Este veículo já está vinculado a uma venda registrada e não pode ser excluído. Marque o status como \"Vendido\" em vez de excluir." },
+        { status: 409 }
+      );
+    }
+    return NextResponse.json({ error: "Veículo não encontrado" }, { status: 404 });
+  }
   return NextResponse.json({ ok: true });
 }

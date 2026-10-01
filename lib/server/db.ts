@@ -309,12 +309,25 @@ export async function updateVehicle(id: string, input: Partial<VehicleInput>): P
   return merged;
 }
 
-export async function deleteVehicle(id: string): Promise<boolean> {
+export type DeleteVehicleResult =
+  | { ok: true }
+  | { ok: false; reason: "not_found" | "linked_to_sale" };
+
+// Nunca deixa excluir um veículo que já está vinculado a uma venda (Negotiation)
+// registrada — foi exatamente assim que duas vendas reais (com contrato e
+// documentos anexados) ficaram com o veículo "quebrado" numa ocasião
+// anterior: alguém excluiu o carro do estoque sem saber que ele já tinha
+// venda associada. Se o carro não deveria mais aparecer, o caminho correto é
+// marcar o status como "Vendido", não excluir o registro.
+export async function deleteVehicle(id: string): Promise<DeleteVehicleResult> {
   const db = await readDb();
-  const before = db.vehicles.length;
+  if (!db.vehicles.some((v) => v.id === id)) return { ok: false, reason: "not_found" };
+  if (db.negotiations.some((n) => n.vehicleId === id)) {
+    return { ok: false, reason: "linked_to_sale" };
+  }
   db.vehicles = db.vehicles.filter((v) => v.id !== id);
   await writeDb(db);
-  return db.vehicles.length < before;
+  return { ok: true };
 }
 
 // Um carro que entrou no estoque por outro caminho (ex: recebido em troca,
