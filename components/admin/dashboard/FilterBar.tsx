@@ -21,7 +21,7 @@ export function FilterBar({ options }: { options: FilterOptions }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentPeriod = (searchParams.get("period") as PeriodPreset) || "thisMonth";
+  const currentPeriod = (searchParams.get("period") as PeriodPreset) || "last30";
   const get = (key: string) => searchParams.get(key) ?? "";
 
   function update(key: string, value: string) {

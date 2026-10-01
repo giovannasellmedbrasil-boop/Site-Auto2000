@@ -118,7 +118,7 @@ const PERIOD_PRESETS: PeriodPreset[] = ["today", "yesterday", "last7", "last30",
 
 export function parseDashboardFilters(searchParams: URLSearchParams): DashboardFilters {
   const periodParam = searchParams.get("period");
-  const period: PeriodPreset = PERIOD_PRESETS.includes(periodParam as PeriodPreset) ? (periodParam as PeriodPreset) : "thisMonth";
+  const period: PeriodPreset = PERIOD_PRESETS.includes(periodParam as PeriodPreset) ? (periodParam as PeriodPreset) : "last30";
   return {
     period,
     from: searchParams.get("from") ?? undefined,
