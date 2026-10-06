@@ -3,17 +3,20 @@ import { vehicleSlug } from "@/lib/utils";
 
 // Veículos importados dos anúncios PÚBLICOS e ativos da loja no Mercado
 // Livre (https://www.mercadolivre.com.br/pagina/auto2000veiculos), última
-// ressincronização em 2026-10-01: o anúncio antigo do Volkswagen Golf saiu
-// do ar e foi reanunciado com um novo ID (tratado aqui como entrada nova) e
-// 2 anúncios genuinamente novos entraram (Fiat Punto e Fiat Fastback —
-// Fastback já tinha sido removido daqui em 2026-09-22 por ter saído do ar
-// naquela época, agora está de volta com outro anúncio). Toda marca/modelo/
-// versão/ano/km/preço/cor/combustível/câmbio/carroceria/final de placa/
-// motor/potência/equipamentos/descrição e as URLs de fotos abaixo vieram da
-// própria página do anúncio (dados estruturados schema.org/Vehicle +
-// tabela de especificações do anúncio) — nada foi inventado. Campos não
-// informados pelo anunciante (ex: porta-malas em alguns modelos) ficam
-// `null`.
+// ressincronização em 2026-10-06: 4 anúncios saíram do ar sem reaparecer
+// com novo ID (Honda CR-V, Volkswagen Golf, Jeep Compass e Toyota Corolla
+// XEi) e nenhum anúncio novo entrou. O Jeep Compass tinha uma venda real
+// entregue ao cliente no dia anterior cujo veículo nunca tinha sido
+// marcado como "Vendido" no estoque — foi corrigido (ver
+// markNegotiationDelivered em lib/server/db.ts) antes desta
+// ressincronização, então ele continua existindo no banco como vendido,
+// só não aparece mais aqui porque o anúncio não está mais ativo. Toda
+// marca/modelo/versão/ano/km/preço/cor/combustível/câmbio/carroceria/final
+// de placa/motor/potência/equipamentos/descrição e as URLs de fotos abaixo
+// vieram da própria página do anúncio (dados estruturados schema.org/
+// Vehicle + tabela de especificações do anúncio) — nada foi inventado.
+// Campos não informados pelo anunciante (ex: porta-malas em alguns
+// modelos) ficam `null`.
 //
 // Isto é uma IMPORTAÇÃO PONTUAL (rodada manualmente, ver
 // scripts/mercadolivre-import), não uma sincronização automática — se o
@@ -103,66 +106,6 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_693735-MLB112449012525_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_799400-MLB112449896283_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_612403-MLB112449217221_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp"
-    ]
-  },
-  {
-    "mercadoLivreId": "MLB4731398347",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-4731398347-honda-cr-v-20-exl-4x4-aut-5p-",
-    "brand": "Honda",
-    "model": "CR-V",
-    "version": "2.0 Exl 4x4 Aut. 5p",
-    "bodyType": "SUV",
-    "manufactureYear": 2009,
-    "modelYear": 2009,
-    "mileageKm": 68000,
-    "price": 79990,
-    "transmission": "AUTOMATIC",
-    "fuel": "GASOLINE",
-    "color": "Marrom",
-    "plateEnding": "4",
-    "doors": 5,
-    "engine": "2.0",
-    "powerHp": 150,
-    "trunkLiters": null,
-    "features": [
-      "AM/FM",
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Bagageiro no teto",
-      "Bancos em couro",
-      "CD player",
-      "Com preço negociável",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Controle remoto para rádio no volante",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Piloto automático",
-      "Porta copos"
-    ],
-    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Honda CR-V 2.0 EXL 4x4 Automático de 2009 é a escolha ideal para aqueles que buscam conforto, segurança e versatilidade em um SUV. Com capacidade para 5 pessoas, este veículo combina um design elegante com tecnologia moderna, tornando-o perfeito para viagens familiares ou deslocamentos diários.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_669249-MLB112628526621_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_956880-MLB112628734847_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_818700-MLB112627401131_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_732968-MLB111561360692_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_845528-MLB112629118317_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_888953-MLB111561360708_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_722968-MLB112629148317_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_669140-MLB111561420362_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_935938-MLB112629148325_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_824567-MLB112628734867_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_833592-MLB112627460157_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_967381-MLB112628556203_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_910704-MLB112628347501_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_940102-MLB112628496931_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_668373-MLB112629148349_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_951092-MLB112628556215_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_646045-MLB112627609197_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_613178-MLB112628734893_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_767661-MLB111561893000_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_795587-MLB112628287429_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_787346-MLB112627609211_062026-F-honda-cr-v-20-exl-4x4-aut-5p.webp"
     ]
   },
   {
@@ -772,129 +715,6 @@ const rawVehicles: RawMlVehicle[] = [
     ]
   },
   {
-    "mercadoLivreId": "MLB7685957776",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7685957776-jeep-compass-20-limited-4x4-aut-5p-1650-mm-",
-    "brand": "Jeep",
-    "model": "Compass",
-    "version": "2.0 Limited 4x4 Aut. 5p 1650 mm",
-    "bodyType": "SUV",
-    "manufactureYear": 2021,
-    "modelYear": 2021,
-    "mileageKm": 66000,
-    "price": 104490,
-    "transmission": "AUTOMATIC",
-    "fuel": "DIESEL",
-    "color": "Branco",
-    "plateEnding": "8",
-    "doors": 5,
-    "engine": "2.0",
-    "powerHp": 170,
-    "trunkLiters": null,
-    "features": [
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Bluetooth",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Controle remoto para rádio no volante",
-      "Faróis com regulação automática",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Piloto automático",
-      "Porta copos",
-      "Rodas de liga leve",
-      "Sensor de chuva",
-      "Sensor de estacionamento",
-      "Sistema ISOFIX",
-      "Tração ASR",
-      "Vidros elétricos",
-      "Vistoria"
-    ],
-    "description": "O Jeep Compass 2021 Limited 2.0 4x4 Automático é um SUV pensado para quem valoriza conforto, presença e boa resposta no uso diário. Na cor branca e com espaço para 5 ocupantes, ele combina porte equilibrado com uma proposta versátil para cidade, estrada e deslocamentos em família.A motorização diesel 2.0, com transmissão automática de 9 velocidades, entrega uma condução mais estável e eficiente para diferentes trajetos. A tração 4x4 amplia a segurança em pisos variados e ajuda a manter o controle em situações que pedem mais aderência.Entre os itens de conforto e conveniência, o modelo traz direção elétrica, piloto automático, bancos elétricos, computador de bordo, Bluetooth e comando de rádio no volante. Também conta com vidros elétricos, retrovisores com ajuste elétrico e porta-copos, recursos que tornam a rotina mais prática.No pacote de segurança, o veículo reúne freios ABS, controle de estabilidade, tração ASR, airbags frontais, laterais e de cortina, além de sensor de chuva, sensor de luz e sensores de estacionamento. Os faróis de xenon, os faróis de neblina e a regulagem automática dos faróis reforçam a visibilidade em diferentes condições de uso.Com 5 portas, 66.000 km rodados e dimensões que favorecem uma boa presença na via, o Compass oferece equilíbrio entre conforto interno e dirigibilidade. É uma opção interessante para quem procura um SUV com visual robusto, boa lista de equipamentos e comportamento preparado para rotinas mais exigentes.Para quem deseja um utilitário esportivo com acabamento refinado e conjunto mecânico consistente, este Compass Limited reúne atributos que fazem diferença no uso real.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_826377-MLB118068790449_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_992110-MLB118068848791_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_640040-MLB118069351083_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_971259-MLB118069408967_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_830190-MLB118068879111_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_742047-MLB118069557617_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_973360-MLB118069586059_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_727687-MLB118068848803_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_649568-MLB118069557635_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_895772-MLB118068819667_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_987658-MLB118068227255_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_906546-MLB118069351113_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_817090-MLB118067872387_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_671712-MLB116559924280_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_743322-MLB118068256621_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_699720-MLB118068819685_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_940283-MLB118069232133_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_704155-MLB118068848835_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_756476-MLB118068583231_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_668966-MLB118068790431_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_871177-MLB116559275222_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_852023-MLB118068881209_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_687736-MLB118069351133_092026-F-jeep-compass-20-limited-4x4-aut-5p-1650-mm.webp"
-    ]
-  },
-  {
-    "mercadoLivreId": "MLB7686085648",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7686085648-toyota-corolla-20-xei-dynamic-force-flex-aut-4p-",
-    "brand": "Toyota",
-    "model": "Corolla",
-    "version": "2.0 Xei Dynamic Force Flex Aut. 4p",
-    "bodyType": "SEDAN",
-    "manufactureYear": 2021,
-    "modelYear": 2021,
-    "mileageKm": 68000,
-    "price": 112990,
-    "transmission": "AUTOMATIC",
-    "fuel": "FLEX",
-    "color": "Preto",
-    "plateEnding": "6",
-    "doors": 4,
-    "engine": "2.0",
-    "powerHp": 169,
-    "trunkLiters": null,
-    "features": [
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Bancos em couro",
-      "Bluetooth",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Controle remoto para rádio no volante",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Piloto automático",
-      "Porta copos",
-      "Rodas de liga leve",
-      "Tração ASR"
-    ],
-    "description": "O Toyota Corolla 2021 na cor preta reúne o perfil de sedã médio com proposta equilibrada para uso urbano e rodoviário. A versão 2.0 XEi Dynamic Force Flex Aut. 4 portas combina condução confortável com respostas consistentes, mantendo a tradição do modelo em praticidade e bom aproveitamento interno.Com motor 2.0 flex, potência de 169 hp e transmissão automática, este Corolla entrega uma experiência de condução fluida e adequada para quem valoriza facilidade no dia a dia. A direção elétrica e a tração dianteira contribuem para manobras mais leves e comportamento previsível em diferentes trajetos.O conjunto de conforto traz banco do motorista com regulagem de altura, bancos em couro, computador de bordo, porta-copos e piloto automático. Há ainda Bluetooth, leitor de MP3 e comando de rádio no volante, recursos que ajudam a tornar a rotina a bordo mais prática e funcional.Em segurança, o modelo conta com freios ABS, alarme, airbags para motorista e passageiro, airbags laterais dianteiros, airbag de cortina, controle de estabilidade, distribuição eletrônica de frenagem e tração ASR. Os faróis anti-nevoeiro, o sensor de luz e os retrovisores com ajuste elétrico completam um conjunto voltado para maior comodidade e visibilidade.As dimensões reforçam a vocação de sedã para quem busca espaço e presença, com 4.630 mm de comprimento, 1.780 mm de largura, 1.455 mm de altura e entre-eixos de 2.700 mm. O tanque de 50 litros, a capacidade para 5 ocupantes e o consumo médio em estrada de 13,9 km/l ajudam a compor um uso eficiente e versátil.Com 68.000 km rodados, este Corolla se destaca por reunir conforto, segurança e uma mecânica conhecida no segmento. É uma escolha coerente para quem procura um sedã bem equipado, com porte equilibrado e condução agradável no dia a dia.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_921780-MLB118069245061_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_664739-MLB118069010691_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_870819-MLB118069598855_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_655661-MLB118068861583_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_726661-MLB118068803629_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_857625-MLB118068832511_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_873901-MLB116561089974_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_878979-MLB118069421935_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_944658-MLB116559937222_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_846862-MLB116559937236_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_758068-MLB118068861601_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_775766-MLB118068803653_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_878769-MLB116561266132_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_686660-MLB116561119282_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_664152-MLB118069598891_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_788596-MLB118069570795_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_642925-MLB118070578127_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_601214-MLB118069570801_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_784186-MLB116561266164_092026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp"
-    ]
-  },
-  {
     "mercadoLivreId": "MLB7686311316",
     "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7686311316-chevrolet-spin-18-lt-7l-aut-5p-",
     "brand": "Chevrolet",
@@ -942,64 +762,6 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_860539-MLB116562034024_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_777956-MLB116561501796_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_947319-MLB116561501800_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp"
-    ]
-  },
-  {
-    "mercadoLivreId": "MLB5291874709",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5291874709-volkswagen-golf-14-tsi-comfortline-5p-manual-",
-    "brand": "Volkswagen",
-    "model": "Golf",
-    "version": "1.4 Tsi Comfortline 5p Manual",
-    "bodyType": "HATCH",
-    "manufactureYear": 2015,
-    "modelYear": 2015,
-    "mileageKm": 73000,
-    "price": 78990,
-    "transmission": "MANUAL",
-    "fuel": "GASOLINE",
-    "color": "Preto",
-    "plateEnding": "5",
-    "doors": 5,
-    "engine": "1.4",
-    "powerHp": 140,
-    "trunkLiters": null,
-    "features": [
-      "AM/FM",
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Ar-condicionado",
-      "Bluetooth",
-      "Com preço negociável",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Porta copos",
-      "Sensor de estacionamento",
-      "Tração ASR"
-    ],
-    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Volkswagen Golf 2015 1.4 TSI Comfortline 5 portas combina perfil hatch com proposta equilibrada para uso diário e viagens. A carroceria preta reforça um visual discreto, enquanto o conjunto mecânico de 140 cv com câmbio manual de 6 marchas favorece respostas ágeis e condução envolvente.Com tração dianteira, direção elétrica e motor a gasolina, o modelo entrega comportamento estável e boa eficiência para diferentes rotinas. O consumo médio de estrada de 13,3 km/l é um dado útil para quem valoriza economia em trajetos mais longos. As dimensões de 4.255 mm de comprimento, 1.799 mm de largura e entre-eixos de 2.630 mm ajudam a equilibrar presença em via pública e facilidade de manobra.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_631533-MLB116763843226_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_772874-MLB118255421141_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_949245-MLB118255066795_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_958566-MLB116706336400_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_915008-MLB118255185901_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_758458-MLB118255066821_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_635302-MLB116706222152_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_679312-MLB118255066823_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_830770-MLB118255275725_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_781004-MLB118255096331_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_600978-MLB118255450563_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_732328-MLB118255421197_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_887369-MLB116706336452_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_773660-MLB118255275747_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_871010-MLB118255450583_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_674978-MLB118255007127_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_756969-MLB118255096377_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_611450-MLB118255096387_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_951361-MLB118255096393_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_888817-MLB118255275781_092026-F-volkswagen-golf-14-tsi-comfortline-5p-manual.webp"
     ]
   },
   {

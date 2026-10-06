@@ -1105,11 +1105,23 @@ export async function markNegotiationDelivered(
   if (!isDeliveryReady(items)) {
     return { ok: false, reason: "Ainda há pendências obrigatórias no checklist." };
   }
+  const now = new Date().toISOString();
+
+  // O carro sai do estoque disponível assim que a venda é entregue — sem
+  // isso, o veículo ficava "Disponível" para sempre mesmo já vendido (uma
+  // venda real ficou assim por dias até quase ser apagada por uma
+  // resincronização do Mercado Livre, já que anúncios encerrados só são
+  // protegidos de remoção quando o veículo está marcado como SOLD).
+  const vehicleIdx = db.vehicles.findIndex((v) => v.id === negotiation.vehicleId);
+  if (vehicleIdx !== -1 && db.vehicles[vehicleIdx].status !== "SOLD") {
+    db.vehicles[vehicleIdx] = { ...db.vehicles[vehicleIdx], status: "SOLD", soldAt: now, updatedAt: now };
+  }
+
   db.negotiations[idx] = {
     ...negotiation,
     status: "DELIVERED",
     transferStage: negotiation.needsTransfer ? negotiation.transferStage : "COMPLETED",
-    updatedAt: new Date().toISOString(),
+    updatedAt: now,
   };
   appendHistory(db, id, "Veículo entregue ao cliente", actor);
   await writeDb(db);
