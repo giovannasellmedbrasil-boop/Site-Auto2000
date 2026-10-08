@@ -403,9 +403,21 @@ export async function importMercadoLivreVehicles(): Promise<{
   }
 
   const activeIds = new Set(mercadoLivreSeedVehicles.map((v) => v.mercadoLivreId));
+  // Além do status SOLD, protege qualquer veículo com uma negociação ainda em
+  // andamento (não cancelada) — um anúncio costuma sair do ar assim que a
+  // venda começa a ser fechada, bem antes do status do veículo (ou da
+  // entrega) serem atualizados. Pegou um caso real: Ford Fiesta Sedan em
+  // "Pronta para entrega", veículo ainda "Disponível", anúncio já encerrado.
+  const vehicleIdsInActiveNegotiation = new Set(
+    db.negotiations.filter((n) => n.status !== "CANCELLED").map((n) => n.vehicleId)
+  );
   const before = db.vehicles.length;
   db.vehicles = db.vehicles.filter(
-    (v) => v.source !== "MERCADO_LIVRE" || v.status === "SOLD" || activeIds.has(v.mercadoLivreId)
+    (v) =>
+      v.source !== "MERCADO_LIVRE" ||
+      v.status === "SOLD" ||
+      vehicleIdsInActiveNegotiation.has(v.id) ||
+      activeIds.has(v.mercadoLivreId)
   );
   const removed = before - db.vehicles.length;
 

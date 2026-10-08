@@ -3,14 +3,21 @@ import { vehicleSlug } from "@/lib/utils";
 
 // Veículos importados dos anúncios PÚBLICOS e ativos da loja no Mercado
 // Livre (https://www.mercadolivre.com.br/pagina/auto2000veiculos), última
-// ressincronização em 2026-10-06: 4 anúncios saíram do ar sem reaparecer
-// com novo ID (Honda CR-V, Volkswagen Golf, Jeep Compass e Toyota Corolla
-// XEi) e nenhum anúncio novo entrou. O Jeep Compass tinha uma venda real
-// entregue ao cliente no dia anterior cujo veículo nunca tinha sido
-// marcado como "Vendido" no estoque — foi corrigido (ver
-// markNegotiationDelivered em lib/server/db.ts) antes desta
-// ressincronização, então ele continua existindo no banco como vendido,
-// só não aparece mais aqui porque o anúncio não está mais ativo. Toda
+// ressincronização em 2026-10-08: saíram do ar o Chevrolet Captiva, o Audi
+// Q3 "Attraction" e o Ford Fiesta Sedan; entraram um Ford EcoSport e um
+// Audi Q3 "Ambiente" (anúncio novo, trim diferente do Q3 que saiu). O Ford
+// Fiesta Sedan tinha uma negociação real em andamento (status
+// READY_FOR_DELIVERY, ainda não entregue) — por isso o filtro de remoção
+// em importMercadoLivreVehicles (lib/server/db.ts) foi reforçado para
+// nunca remover um veículo com qualquer negociação não cancelada, não só
+// as já vendidas; assim ele continua existindo no banco mesmo saindo
+// deste arquivo. Ressincronização anterior em 2026-10-06: 4 anúncios
+// saíram do ar sem reaparecer com novo ID (Honda CR-V, Volkswagen Golf,
+// Jeep Compass e Toyota Corolla XEi) e nenhum anúncio novo entrou. O Jeep
+// Compass tinha uma venda real entregue ao cliente no dia anterior cujo
+// veículo nunca tinha sido marcado como "Vendido" no estoque — foi
+// corrigido (ver markNegotiationDelivered em lib/server/db.ts) antes
+// daquela ressincronização. Toda
 // marca/modelo/versão/ano/km/preço/cor/combustível/câmbio/carroceria/final
 // de placa/motor/potência/equipamentos/descrição e as URLs de fotos abaixo
 // vieram da própria página do anúncio (dados estruturados schema.org/
@@ -49,127 +56,6 @@ interface RawMlVehicle {
 }
 
 const rawVehicles: RawMlVehicle[] = [
-  {
-    "mercadoLivreId": "MLB4722520765",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-4722520765-chevrolet-captiva-24-sport-ecotec-5p-",
-    "brand": "Chevrolet",
-    "model": "Captiva",
-    "version": "2.4 Sport Ecotec 5p",
-    "bodyType": "SUV",
-    "manufactureYear": 2012,
-    "modelYear": 2012,
-    "mileageKm": 145000,
-    "price": 43990,
-    "transmission": "AUTOMATIC",
-    "fuel": "GASOLINE",
-    "color": "Prateado",
-    "plateEnding": "7",
-    "doors": 5,
-    "engine": "2.4",
-    "powerHp": 184,
-    "trunkLiters": null,
-    "features": [
-      "AM/FM",
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Bancos em couro",
-      "Com preço negociável",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Controle remoto para rádio no volante",
-      "Entrada USB",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Piloto automático",
-      "Porta copos",
-      "Tração ASR"
-    ],
-    "description": "LAUDO CAUTELAR APROVADO!A Chevrolet Captiva 2012 é um SUV que combina conforto, versatilidade e segurança, ideal para famílias ou quem busca um veículo espaçoso e confiável. Com sua elegante cor prateada, ela se destaca nas cidades e estradas, oferecendo um design moderno e atraente. Seu motor 2.4L proporciona potência de 184 hp, garantindo uma condução ágil e prazerosa em diversas condições.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_807075-MLB112810782983_062026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_903392-MLB112449806997_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_719815-MLB111403439132_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_720263-MLB111402643516_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_835068-MLB111404032062_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_912118-MLB111403617612_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_925644-MLB111403234308_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_836699-MLB111402643540_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_929033-MLB111402938420_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_861855-MLB111402938422_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_981731-MLB112449836773_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_936678-MLB111402938436_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_944324-MLB112448716927_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_831765-MLB112448716929_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_600477-MLB111403234350_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_804784-MLB111403705396_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_690699-MLB111402938458_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_693735-MLB112449012525_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_799400-MLB112449896283_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_612403-MLB112449217221_052026-F-chevrolet-captiva-24-sport-ecotec-5p.webp"
-    ]
-  },
-  {
-    "mercadoLivreId": "MLB4875139473",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-4875139473-audi-q3-14-tfsi-attraction-s-tronic-5p-",
-    "brand": "Audi",
-    "model": "Q3",
-    "version": "1.4 Tfsi Attraction S-tronic 5p",
-    "bodyType": "SUV",
-    "manufactureYear": 2016,
-    "modelYear": 2016,
-    "mileageKm": 99000,
-    "price": 77990,
-    "transmission": "AUTOMATIC",
-    "fuel": "GASOLINE",
-    "color": "Prateado",
-    "plateEnding": "5",
-    "doors": 5,
-    "engine": "1.4",
-    "powerHp": 150,
-    "trunkLiters": null,
-    "features": [
-      "AM/FM",
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Ar-condicionado",
-      "Bancos em couro",
-      "Bluetooth",
-      "Com preço negociável",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Controle remoto para rádio no volante",
-      "Faróis com regulação automática",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Porta copos",
-      "Sensor de chuva",
-      "Tração ASR"
-    ],
-    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Audi Q3 2016 1.4 TFSI Attraction S-tronic é um SUV com proposta equilibrada para uso urbano e viagens, unindo porte compacto com cabine para cinco pessoas. A carroceria de cinco portas, a pintura prateada e o câmbio automático ajudam na rotina com mais conforto e praticidade.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_638582-MLB113727898550_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_996362-MLB114368550607_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_754166-MLB114368134809_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_769483-MLB114367456833_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_783842-MLB113138254548_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_959055-MLB114367546353_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_768261-MLB114367871557_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_991723-MLB114368402845_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_836354-MLB114367456847_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_653803-MLB113138750230_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_782915-MLB114368223761_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_896713-MLB114368343511_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_859540-MLB114368343513_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_776434-MLB114367576147_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_670399-MLB113138840058_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_684426-MLB113138254576_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_804257-MLB114367282029_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_972953-MLB113138254578_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_687949-MLB114367635427_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_921417-MLB114367546405_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_952653-MLB114367813617_072026-F-audi-q3-14-tfsi-attraction-s-tronic-5p.webp"
-    ]
-  },
   {
     "mercadoLivreId": "MLB4936820795",
     "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-4936820795-peugeot-partner-furgo-16-800kg-flex-5p-",
@@ -319,54 +205,6 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_633799-MLB115896173428_092026-F-chevrolet-corsa-classic-16-spirit-4p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_702302-MLB115896556076_092026-F-chevrolet-corsa-classic-16-spirit-4p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_727489-MLB117363900765_092026-F-chevrolet-corsa-classic-16-spirit-4p.webp"
-    ]
-  },
-  {
-    "mercadoLivreId": "MLB7549807636",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7549807636-ford-fiesta-sedan-16-fly-flex-4p-",
-    "brand": "Ford",
-    "model": "Fiesta Sedan",
-    "version": "1.6 Fly Flex 4p",
-    "bodyType": "SEDAN",
-    "manufactureYear": 2010,
-    "modelYear": 2010,
-    "mileageKm": 104000,
-    "price": 31990,
-    "transmission": "MANUAL",
-    "fuel": "FLEX",
-    "color": "Preto",
-    "plateEnding": "8",
-    "doors": 4,
-    "engine": "1.6",
-    "powerHp": 102,
-    "trunkLiters": null,
-    "features": [
-      "Alarme",
-      "Ar-condicionado",
-      "Freios ABS",
-      "Porta copos"
-    ],
-    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Ford Fiesta Sedan 1.6 Fly Flex 4 portas é uma opção prática para quem busca um sedã compacto com bom equilíbrio entre uso urbano e trajetos mais longos. Na cor preta e com espaço para 5 pessoas, ele combina visual discreto com formato de porta-malas e cabine pensados para a rotina.Este modelo ano 2010 traz motor 1.6 flex, com funcionamento a gasolina e álcool, câmbio manual de 5 velocidades e direção mecânica. A proposta é entregar condução direta e manutenção simples, favorecendo quem valoriza um carro funcional no dia a dia.Entre os itens de conforto, há ar-condicionado, porta-copos, vidros elétricos dianteiros, banco do motorista com regulagem de altura e banco traseiro retrátil. Esses recursos ajudam a tornar as viagens mais confortáveis e o uso cotidiano mais conveniente, seja para deslocamentos curtos ou para levar bagagem.A segurança conta com freios ABS e alarme, além de tração dianteira. O conjunto reforça a sensação de controle em diferentes condições de uso, com uma configuração conhecida por oferecer estabilidade e praticidade.Nas medidas, o Fiesta Sedan apresenta 4.221 mm de comprimento, 1.765 mm de largura, 1.495 mm de altura e 2.488 mm de entre-eixos. O tanque de 54 litros e a potência de 102 cv completam um conjunto adequado para quem procura um sedã compacto com boa presença interna.Com 104.000 km rodados, este Ford Fiesta Sedan Fly reúne atributos úteis para quem quer um automóvel versátil, de manutenção objetiva e pronto para atender bem na cidade e em viagens curtas.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_711644-MLB117240937977_092026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_826300-MLB115478866852_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_866600-MLB116908260617_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_716118-MLB116908260615_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_639317-MLB115478896408_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_832010-MLB115478866816_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_727328-MLB116908525231_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_791937-MLB116907708445_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_849083-MLB115478257710_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_981992-MLB116907708449_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_808603-MLB115478896424_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_765265-MLB116907708461_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_969557-MLB115478896432_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_934537-MLB116908525249_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_728923-MLB115478866840_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_744916-MLB115478866844_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_839973-MLB115478257724_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_949612-MLB116908260671_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_620654-MLB115478111844_082026-F-ford-fiesta-sedan-16-fly-flex-4p.webp"
     ]
   },
   {
@@ -861,6 +699,126 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_928795-MLB118258294741_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_725085-MLB118258530177_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_731536-MLB118258294749_092026-F-fiat-fastback-10-tributo-125-turbo-200-flex-aut-5p.webp"
+    ]
+  },
+  {
+    "mercadoLivreId": "MLB5352064411",
+    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5352064411-ford-ecosport-16-16v-freestyle-flex-5p-",
+    "brand": "Ford",
+    "model": "Ecosport",
+    "version": "1.6 16v Freestyle Flex 5p",
+    "bodyType": "SUV",
+    "manufactureYear": 2014,
+    "modelYear": 2014,
+    "mileageKm": 136524,
+    "price": 49990,
+    "transmission": "MANUAL",
+    "fuel": "FLEX",
+    "color": "Preto",
+    "plateEnding": "8",
+    "doors": 5,
+    "engine": "1.6",
+    "powerHp": 110,
+    "trunkLiters": null,
+    "features": [
+      "AM/FM",
+      "Airbag para motorista e passageiro",
+      "Alarme",
+      "Ar-condicionado",
+      "Bluetooth",
+      "Computador de bordo",
+      "Controle de estabilidade",
+      "Controle remoto para rádio no volante",
+      "Entrada USB",
+      "Freios ABS",
+      "Leitor de MP3",
+      "Porta copos",
+      "Tração ASR",
+      "Vistoria"
+    ],
+    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Ford EcoSport 2014 Freestyle 1.6 Flex na cor preta é um SUV pensado para uso urbano e deslocamentos do dia a dia, com posição de dirigir elevada e proposta versátil. Com 5 portas e 5 lugares, atende bem rotinas familiares ou trajetos com mais conforto para passageiros e bagagens.A motorização 1.6 flex, combinada ao câmbio manual de 5 marchas, oferece condução direta e controle simples em diferentes situações. A tração dianteira e a direção elétrica contribuem para manobras mais fáceis e para uma experiência de uso prática em cidade e estrada.",
+    "photos": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_959889-MLB118960719263_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_988341-MLB117364120700_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_876851-MLB118961516125_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_984587-MLB118960159063_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_798871-MLB118959951559_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_988191-MLB118961516167_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_666325-MLB117365120180_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_955796-MLB117365385048_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_878168-MLB118959892055_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_735946-MLB117365120204_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_680481-MLB117364529960_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_875841-MLB117364209024_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_855024-MLB117364529984_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_822909-MLB117365385086_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_973822-MLB118959951603_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_701144-MLB118960719261_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_942242-MLB117364208966_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp"
+    ]
+  },
+  {
+    "mercadoLivreId": "MLB5352299465",
+    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5352299465-audi-q3-14-tfsi-ambiente-s-tronic-5p-",
+    "brand": "Audi",
+    "model": "Q3",
+    "version": "1.4 Tfsi Ambiente S-tronic 5p",
+    "bodyType": "SUV",
+    "manufactureYear": 2016,
+    "modelYear": 2016,
+    "mileageKm": 99000,
+    "price": 76490,
+    "transmission": "AUTOMATIC",
+    "fuel": "GASOLINE",
+    "color": "Prateado",
+    "plateEnding": "5",
+    "doors": 5,
+    "engine": "1.4",
+    "powerHp": 150,
+    "trunkLiters": null,
+    "features": [
+      "AM/FM",
+      "Airbag para motorista e passageiro",
+      "Alarme",
+      "Ar-condicionado",
+      "Bancos em couro",
+      "Bluetooth",
+      "Computador de bordo",
+      "Controle de estabilidade",
+      "Controle remoto para rádio no volante",
+      "Faróis com regulação automática",
+      "Freios ABS",
+      "Leitor de MP3",
+      "Piloto automático",
+      "Porta copos",
+      "Sensor de chuva",
+      "Sensor de estacionamento",
+      "Tração ASR",
+      "Vistoria"
+    ],
+    "description": "LAUDO CAUTELAR APROVADO!VEÍCULO DE 2º DONO COM TODAS AS REVISÕES NA AUDI ATE A KM ATUAL!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Audi Q3 2016 1.4 TFSI Ambiente S-tronic é um SUV pensado para quem valoriza conforto, tecnologia e condução prática no uso diário. A combinação de câmbio automático, direção elétrica e tração dianteira favorece uma experiência mais simples no trânsito e mais agradável em trajetos urbanos ou rodoviários.Com motor 1.4 a gasolina e potência de 150 hp, o modelo entrega um conjunto equilibrado para quem busca desempenho consistente sem abrir mão da eficiência. A transmissão de 6 velocidades contribui para uma condução suave, enquanto o piloto automático ajuda em viagens e deslocamentos mais longos.",
+    "photos": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_796821-MLB118963001263_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_825201-MLB117365622946_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_866503-MLB117365622948_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_666812-MLB118963405905_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_769447-MLB118963405907_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_908217-MLB118962432347_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_838025-MLB117366771964_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_808057-MLB118962992423_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_660907-MLB118961900455_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_657991-MLB117366977382_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_779886-MLB118962432367_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_992517-MLB117366330570_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_864925-MLB118962992445_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_917290-MLB117366771998_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_995838-MLB118961900487_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_845284-MLB117366977404_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_795021-MLB117366419908_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_644102-MLB117366977414_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_945747-MLB118963376267_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_977535-MLB118962992393_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_624940-MLB117367065278_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp"
     ]
   }
 ];
