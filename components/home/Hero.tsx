@@ -56,7 +56,7 @@ export function Hero() {
               </div>
               <h3 className="text-sm font-semibold text-accent-400">Avaliações dos nossos clientes no Google</h3>
               <p className="text-sm leading-relaxed text-white">
-                4,8/5 em 123 avaliações de clientes atendidos.
+                4,8/5 em 129 avaliações de clientes atendidos.
               </p>
             </a>
           </div>
