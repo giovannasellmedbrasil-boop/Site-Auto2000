@@ -3,15 +3,24 @@ import { vehicleSlug } from "@/lib/utils";
 
 // Veículos importados dos anúncios PÚBLICOS e ativos da loja no Mercado
 // Livre (https://www.mercadolivre.com.br/pagina/auto2000veiculos), última
-// ressincronização em 2026-10-08: saíram do ar o Chevrolet Captiva, o Audi
-// Q3 "Attraction" e o Ford Fiesta Sedan; entraram um Ford EcoSport e um
-// Audi Q3 "Ambiente" (anúncio novo, trim diferente do Q3 que saiu). O Ford
-// Fiesta Sedan tinha uma negociação real em andamento (status
-// READY_FOR_DELIVERY, ainda não entregue) — por isso o filtro de remoção
-// em importMercadoLivreVehicles (lib/server/db.ts) foi reforçado para
-// nunca remover um veículo com qualquer negociação não cancelada, não só
-// as já vendidas; assim ele continua existindo no banco mesmo saindo
-// deste arquivo. Ressincronização anterior em 2026-10-06: 4 anúncios
+// ressincronização em 2026-10-12: saíram do ar o Volkswagen Saveiro e o
+// Chevrolet Spin, nenhum anúncio novo entrou. Os dois já tinham venda real
+// entregue ao cliente (negociações com status DELIVERED), mas o veículo
+// continuava marcado "Disponível" no estoque — a correção que marca o
+// veículo como "Vendido" na entrega (markNegotiationDelivered, de
+// 2026-10-06) nunca tinha chegado ao deploy de produção do painel
+// administrativo (sistemaauto2000.vercel.app ficou 25 dias sem redeploy,
+// desde 2026-09-17); o painel foi redeployado agora e os dois veículos
+// corrigidos manualmente para "Vendido" no banco. Ressincronização em
+// 2026-10-08: saíram do ar o Chevrolet Captiva, o Audi Q3 "Attraction" e o
+// Ford Fiesta Sedan; entraram um Ford EcoSport e um Audi Q3 "Ambiente"
+// (anúncio novo, trim diferente do Q3 que saiu). O Ford Fiesta Sedan
+// tinha uma negociação real em andamento (status READY_FOR_DELIVERY,
+// ainda não entregue) — por isso o filtro de remoção em
+// importMercadoLivreVehicles (lib/server/db.ts) foi reforçado para nunca
+// remover um veículo com qualquer negociação não cancelada, não só as já
+// vendidas; assim ele continua existindo no banco mesmo saindo deste
+// arquivo. Ressincronização anterior em 2026-10-06: 4 anúncios
 // saíram do ar sem reaparecer com novo ID (Honda CR-V, Volkswagen Golf,
 // Jeep Compass e Toyota Corolla XEi) e nenhum anúncio novo entrou. O Jeep
 // Compass tinha uma venda real entregue ao cliente no dia anterior cujo
@@ -109,55 +118,6 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_830416-MLB115021564023_072026-F-peugeot-partner-furgo-16-800kg-flex-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_830313-MLB113730018960_072026-F-peugeot-partner-furgo-16-800kg-flex-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_782811-MLB113730226834_072026-F-peugeot-partner-furgo-16-800kg-flex-5p.webp"
-    ]
-  },
-  {
-    "mercadoLivreId": "MLB5156505769",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5156505769-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p-",
-    "brand": "Volkswagen",
-    "model": "Saveiro",
-    "version": "1.6 Robust Cab. Simples Total Flex 2p",
-    "bodyType": "PICKUP",
-    "manufactureYear": 2023,
-    "modelYear": 2023,
-    "mileageKm": 50000,
-    "price": 69990,
-    "transmission": "MANUAL",
-    "fuel": "FLEX",
-    "color": "Branco",
-    "plateEnding": "1",
-    "doors": 2,
-    "engine": "1.6",
-    "powerHp": 101,
-    "trunkLiters": null,
-    "features": [
-      "Airbag para motorista e passageiro",
-      "Controle de estabilidade",
-      "Entrada USB",
-      "Freios ABS",
-      "Porta copos",
-      "Tração ASR"
-    ],
-    "description": "Esta Volkswagen Saveiro 2023 na versão Robust Cabine Simples foi pensada para quem procura uma picape prática para rotina urbana, trabalho leve e deslocamentos com carga. A carroceria pick-up e a configuração de 2 portas favorecem um uso funcional, com proposta direta e objetiva.O conjunto mecânico traz motor 1.6 Total Flex, com uso de gasolina e álcool, câmbio manual de 5 marchas e tração dianteira. Essa combinação costuma atender bem quem valoriza condução simples, resposta coerente para o dia a dia e um perfil de uso versátil.A direção mecânica reforça a proposta essencial do modelo, voltada para quem prioriza um veículo resistente e sem excessos de equipamentos. Na cor branca, a Saveiro mantém visual discreto e versátil, adequado tanto para atividades profissionais quanto para uso pessoal.Com 50.000 km rodados e condição de usado, trata-se de uma opção que já passou por utilização anterior e pode interessar a quem busca uma picape compacta com perfil de trabalho. A versão Robust é conhecida pela abordagem prática, com foco em utilidade e desempenho coerente para o segmento.Entre os dados técnicos disponíveis, a potência de 101 hp ajuda a compor um conjunto equilibrado para o porte do veículo. O ano 2023 e a configuração 1.6 Robust Cab. Simples Total Flex 2p oferecem uma referência clara para comparação entre anúncios semelhantes.É uma escolha adequada para quem precisa de uma picape Volkswagen com configuração funcional, condução simples e proposta objetiva para o dia a dia.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_667243-MLB117241137455_092026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_681866-MLB115478260896_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_927794-MLB116908528435_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_609598-MLB116907711683_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_863640-MLB115478870114_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_632533-MLB116908528449_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_680743-MLB116908528459_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_813710-MLB116907711701_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_916767-MLB116908675101_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_897050-MLB115478870134_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_998711-MLB115478260866_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_986918-MLB116907711713_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_732901-MLB116908675119_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_791925-MLB115478870146_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_863744-MLB115478899662_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_992221-MLB115478260884_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_754218-MLB115478870158_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_714026-MLB115478899672_082026-F-volkswagen-saveiro-16-robust-cab-simples-total-flex-2p.webp"
     ]
   },
   {
@@ -550,56 +510,6 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_632907-MLB116558746692_092026-F-fiat-uno-10-attractive-flex-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_843973-MLB116557560702_092026-F-fiat-uno-10-attractive-flex-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_903452-MLB116558746702_092026-F-fiat-uno-10-attractive-flex-5p.webp"
-    ]
-  },
-  {
-    "mercadoLivreId": "MLB7686311316",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7686311316-chevrolet-spin-18-lt-7l-aut-5p-",
-    "brand": "Chevrolet",
-    "model": "Spin",
-    "version": "1.8 Lt 7l Aut. 5p",
-    "bodyType": "MINIVAN",
-    "manufactureYear": 2024,
-    "modelYear": 2024,
-    "mileageKm": 63000,
-    "price": 82990,
-    "transmission": "MANUAL",
-    "fuel": "FLEX",
-    "color": "Branco",
-    "plateEnding": "2",
-    "doors": 5,
-    "engine": "1.8",
-    "powerHp": 106,
-    "trunkLiters": null,
-    "features": [
-      "Ar-condicionado",
-      "Controle de estabilidade",
-      "Freios ABS",
-      "Tração ASR"
-    ],
-    "description": "A Chevrolet Spin LT 1.8 é uma opção voltada a quem procura um carro de uso familiar com espaço para até 7 pessoas. A carroceria monovolume favorece a acomodação dos ocupantes e torna o conjunto prático para rotinas urbanas e deslocamentos mais longos.O conjunto mecânico flex, com motor 1.8 de 106 hp, atende bem a quem valoriza equilíbrio entre desempenho e versatilidade no abastecimento. A direção hidráulica contribui para uma condução mais leve no dia a dia, enquanto o ar-condicionado ajuda a manter o conforto interno em diferentes condições de clima.Entre os itens de segurança e controle, o veículo traz freios ABS, controle de estabilidade, controle de tração e tração dianteira. Esses recursos ampliam a confiança ao dirigir e ajudam a manter a condução mais previsível em trajetos variados.Com 5 portas e acabamento em branco, o modelo se adapta bem ao uso familiar e também a quem precisa de um veículo funcional para transportar passageiros com mais comodidade. O registro de quilometragem informa 63.000 km, dado relevante para avaliar o histórico de uso.A unidade foi verificada e consta como Chevrolet Spin 2024 na versão LT 1.8 7 lugares, reunindo espaço interno, itens de conforto e recursos de segurança em um formato prático. É uma escolha coerente para quem busca um monovolume flex com foco em rotina, viagens e transporte de mais ocupantes.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_897633-MLB116561561916_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_639731-MLB118072079397_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_721872-MLB118071254615_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_825352-MLB118072079405_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_603975-MLB116562152806_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_896074-MLB116562391258_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_762185-MLB116562567604_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_740654-MLB116561530016_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_875390-MLB116561442728_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_964388-MLB116563007820_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_661048-MLB116561559778_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_656164-MLB116562391272_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_844613-MLB118071136815_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_725634-MLB116561471742_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_820756-MLB116562034014_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_935136-MLB116563037098_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_832564-MLB116562152850_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_860688-MLB116562034022_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_860539-MLB116562034024_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_777956-MLB116561501796_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_947319-MLB116561501800_092026-F-chevrolet-spin-18-lt-7l-aut-5p.webp"
     ]
   },
   {
