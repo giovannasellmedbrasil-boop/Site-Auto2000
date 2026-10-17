@@ -3,7 +3,12 @@ import { vehicleSlug } from "@/lib/utils";
 
 // Veículos importados dos anúncios PÚBLICOS e ativos da loja no Mercado
 // Livre (https://www.mercadolivre.com.br/pagina/auto2000veiculos), última
-// ressincronização em 2026-10-12: saíram do ar o Volkswagen Saveiro e o
+// ressincronização em 2026-10-17: saíram do ar o Ford EcoSport e o Renault
+// Kwid (os dois já com venda entregue e corretamente marcados "Vendido"
+// automaticamente, sem precisar de correção manual — confirma que o
+// redeploy do painel administrativo do dia 12/10 resolveu o problema);
+// entrou um anúncio novo de Toyota Corolla 2.0 XEi Dynamic Force Flex Aut.
+// 4p. Ressincronização em 2026-10-12: saíram do ar o Volkswagen Saveiro e o
 // Chevrolet Spin, nenhum anúncio novo entrou. Os dois já tinham venda real
 // entregue ao cliente (negociações com status DELIVERED), mas o veículo
 // continuava marcado "Disponível" no estoque — a correção que marca o
@@ -408,60 +413,6 @@ const rawVehicles: RawMlVehicle[] = [
     ]
   },
   {
-    "mercadoLivreId": "MLB7685730612",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7685730612-renault-kwid-10-12v-zen-sce-5p-",
-    "brand": "Renault",
-    "model": "Kwid",
-    "version": "1.0 12v Zen Sce 5p",
-    "bodyType": "HATCH",
-    "manufactureYear": 2023,
-    "modelYear": 2023,
-    "mileageKm": 51900,
-    "price": 45790,
-    "transmission": "MANUAL",
-    "fuel": "FLEX",
-    "color": "Branco",
-    "plateEnding": "9",
-    "doors": 5,
-    "engine": "1.0",
-    "powerHp": 68,
-    "trunkLiters": null,
-    "features": [
-      "Airbag para motorista e passageiro",
-      "Ar-condicionado",
-      "Bluetooth",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Entrada USB",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Porta copos",
-      "Tração ASR",
-      "Vistoria"
-    ],
-    "description": "O Renault Kwid 2023 na cor branca é um hatch compacto de 5 portas, pensado para o uso diário com agilidade e praticidade. A versão Zen 1.0 12V Sce combina proposta urbana com visual simples e funcional, favorecendo manobras e estacionamento em espaços menores.Seu motor 1.0 flex de 68 hp trabalha com câmbio manual de 5 marchas e tração dianteira, oferecendo condução direta no dia a dia. A direção elétrica contribui para uma experiência mais leve em baixa velocidade, enquanto o consumo médio em estrada de 15,6 km/l reforça o perfil voltado à eficiência.Na segurança, o modelo traz freios ABS, controle de estabilidade, controle de tração ASR e airbags frontais para motorista e passageiro. Também conta com airbags laterais dianteiros, conjunto que amplia a proteção em trajetos urbanos e rodoviários.O conforto aparece em recursos como ar-condicionado, Bluetooth, entrada USB, leitor de MP3 e computador de bordo. Os vidros elétricos dianteiros, o porta-copos e a cabine para 5 ocupantes tornam a rotina mais prática em deslocamentos curtos e médios.Com 3.680 mm de comprimento, 1.579 mm de largura, 1.479 mm de altura e entre-eixos de 2.423 mm, o Kwid mantém dimensões enxutas sem abrir mão da funcionalidade. O tanque de 38 litros completa um conjunto equilibrado para quem procura um carro compacto, econômico e fácil de usar no cotidiano.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_927819-MLB116558366058_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_842007-MLB118066669503_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_912736-MLB116557357154_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_941573-MLB118067845921_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_916497-MLB116557981830_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_685661-MLB116557832606_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_764518-MLB116557802790_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_798074-MLB116558750102_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_760716-MLB116558366040_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_902217-MLB118067227955_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_998732-MLB118067845945_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_737933-MLB118066579431_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_787110-MLB118067845955_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_972854-MLB116557802816_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_909023-MLB118066674609_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_875267-MLB116557564088_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_749496-MLB118067227989_092026-F-renault-kwid-10-12v-zen-sce-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_602635-MLB116558750134_092026-F-renault-kwid-10-12v-zen-sce-5p.webp"
-    ]
-  },
-  {
     "mercadoLivreId": "MLB7685732848",
     "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7685732848-fiat-uno-10-attractive-flex-5p-",
     "brand": "Fiat",
@@ -612,62 +563,6 @@ const rawVehicles: RawMlVehicle[] = [
     ]
   },
   {
-    "mercadoLivreId": "MLB5352064411",
-    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5352064411-ford-ecosport-16-16v-freestyle-flex-5p-",
-    "brand": "Ford",
-    "model": "Ecosport",
-    "version": "1.6 16v Freestyle Flex 5p",
-    "bodyType": "SUV",
-    "manufactureYear": 2014,
-    "modelYear": 2014,
-    "mileageKm": 136524,
-    "price": 49990,
-    "transmission": "MANUAL",
-    "fuel": "FLEX",
-    "color": "Preto",
-    "plateEnding": "8",
-    "doors": 5,
-    "engine": "1.6",
-    "powerHp": 110,
-    "trunkLiters": null,
-    "features": [
-      "AM/FM",
-      "Airbag para motorista e passageiro",
-      "Alarme",
-      "Ar-condicionado",
-      "Bluetooth",
-      "Computador de bordo",
-      "Controle de estabilidade",
-      "Controle remoto para rádio no volante",
-      "Entrada USB",
-      "Freios ABS",
-      "Leitor de MP3",
-      "Porta copos",
-      "Tração ASR",
-      "Vistoria"
-    ],
-    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Ford EcoSport 2014 Freestyle 1.6 Flex na cor preta é um SUV pensado para uso urbano e deslocamentos do dia a dia, com posição de dirigir elevada e proposta versátil. Com 5 portas e 5 lugares, atende bem rotinas familiares ou trajetos com mais conforto para passageiros e bagagens.A motorização 1.6 flex, combinada ao câmbio manual de 5 marchas, oferece condução direta e controle simples em diferentes situações. A tração dianteira e a direção elétrica contribuem para manobras mais fáceis e para uma experiência de uso prática em cidade e estrada.",
-    "photos": [
-      "https://http2.mlstatic.com/D_NQ_NP_2X_959889-MLB118960719263_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_988341-MLB117364120700_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_876851-MLB118961516125_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_984587-MLB118960159063_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_798871-MLB118959951559_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_988191-MLB118961516167_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_666325-MLB117365120180_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_955796-MLB117365385048_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_878168-MLB118959892055_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_735946-MLB117365120204_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_680481-MLB117364529960_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_875841-MLB117364209024_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_855024-MLB117364529984_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_822909-MLB117365385086_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_973822-MLB118959951603_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_701144-MLB118960719261_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp",
-      "https://http2.mlstatic.com/D_NQ_NP_2X_942242-MLB117364208966_102026-F-ford-ecosport-16-16v-freestyle-flex-5p.webp"
-    ]
-  },
-  {
     "mercadoLivreId": "MLB5352299465",
     "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-5352299465-audi-q3-14-tfsi-ambiente-s-tronic-5p-",
     "brand": "Audi",
@@ -729,6 +624,64 @@ const rawVehicles: RawMlVehicle[] = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_945747-MLB118963376267_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_977535-MLB118962992393_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp",
       "https://http2.mlstatic.com/D_NQ_NP_2X_624940-MLB117367065278_102026-F-audi-q3-14-tfsi-ambiente-s-tronic-5p.webp"
+    ]
+  },
+  {
+    "mercadoLivreId": "MLB7810883010",
+    "mercadoLivrePermalink": "https://carro.mercadolivre.com.br/MLB-7810883010-toyota-corolla-20-xei-dynamic-force-flex-aut-4p-",
+    "brand": "Toyota",
+    "model": "Corolla",
+    "version": "2.0 Xei Dynamic Force Flex Aut. 4p",
+    "bodyType": "SEDAN",
+    "manufactureYear": 2021,
+    "modelYear": 2021,
+    "mileageKm": 68000,
+    "price": 112790,
+    "transmission": "AUTOMATIC",
+    "fuel": "FLEX",
+    "color": "Preto",
+    "plateEnding": "6",
+    "doors": 4,
+    "engine": "2.0",
+    "powerHp": 169,
+    "trunkLiters": null,
+    "features": [
+      "Airbag para motorista e passageiro",
+      "Alarme",
+      "Bancos em couro",
+      "Bluetooth",
+      "Computador de bordo",
+      "Controle de estabilidade",
+      "Controle remoto para rádio no volante",
+      "Freios ABS",
+      "Leitor de MP3",
+      "Piloto automático",
+      "Porta copos",
+      "Rodas de liga leve",
+      "Tração ASR"
+    ],
+    "description": "LAUDO CAUTELAR APROVADO!Entre em contato com a nossa equipe via WhatsApp para maiores informações e para simulações, confira também nossas avaliações no Google de 4,8 estrelas.Atendemos em sede própria e temos 44 anos de mercado.O Toyota Corolla 2021 na versão XEi Dynamic Force Flex Automático reúne o perfil de um sedã voltado ao uso diário com conforto e boa presença visual. Na cor preta, oferece cabine para até 5 ocupantes, 4 portas e direção elétrica, o que favorece uma rotina mais prática em cidade e estrada.O conjunto mecânico traz motor 2.0 flex de 169 cv e transmissão automática, entregando condução suave e respostas consistentes. A tração dianteira e o piloto automático contribuem para uma direção mais estável e confortável em trajetos variados.",
+    "photos": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_603237-MLB117719790598_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_784245-MLB119339882605_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_877664-MLB119340120787_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_984812-MLB117719966672_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_610405-MLB119339882613_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_878652-MLB119338850571_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_945204-MLB117719407594_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_878669-MLB119339648489_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_946834-MLB119339823343_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_842783-MLB119339823361_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_978570-MLB117719966704_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_724621-MLB117719378844_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_846059-MLB119340120829_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_957581-MLB117719732840_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_747020-MLB117719790574_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_777755-MLB119339648523_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_689865-MLB119340120841_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_684590-MLB119338642923_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_671784-MLB119338642927_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_953505-MLB119340415329_102026-F-toyota-corolla-20-xei-dynamic-force-flex-aut-4p.webp"
     ]
   }
 ];
