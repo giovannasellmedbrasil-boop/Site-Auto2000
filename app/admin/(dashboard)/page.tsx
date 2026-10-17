@@ -99,6 +99,15 @@ export default async function AdminDashboardPage({
           filtersQuery={filtersQuery}
         />
         <StatCard
+          label="Lucro"
+          value={<Money value={data.kpis.profit.value} />}
+          icon="wallet"
+          deltaPct={data.kpis.profit.deltaPct}
+          direction={data.kpis.profit.direction}
+          sublabel="Faturamento menos o que foi pago pelos carros vendidos"
+          filtersQuery={filtersQuery}
+        />
+        <StatCard
           label="Veículos comprados"
           value={String(data.purchasedVehicles.count)}
           sublabel={<>Total pago: <Money value={data.purchasedVehicles.totalValue} /></>}

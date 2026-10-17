@@ -41,6 +41,7 @@ export function VehicleForm({ vehicle }: { vehicle?: Vehicle }) {
       mileageKm: form.get("mileageKm"),
       price: form.get("price"),
       costPrice: form.get("costPrice") || undefined,
+      variableExpenses: form.get("variableExpenses") || undefined,
       transmission: form.get("transmission"),
       fuel: form.get("fuel"),
       color: form.get("color"),
@@ -123,8 +124,12 @@ export function VehicleForm({ vehicle }: { vehicle?: Vehicle }) {
             <MoneyInput name="price" required defaultValue={vehicle?.price} />
           </FormGroup>
           <FormGroup>
-            <Label hint="uso interno, não exibido no site">Preço de custo</Label>
+            <Label hint="uso interno, não exibido no site">Preço de custo (valor pago na compra)</Label>
             <MoneyInput name="costPrice" defaultValue={vehicle?.costPrice} />
+          </FormGroup>
+          <FormGroup>
+            <Label hint="uso interno, não exibido no site">Gastos variáveis</Label>
+            <MoneyInput name="variableExpenses" defaultValue={vehicle?.variableExpenses} />
           </FormGroup>
           <FormGroup>
             <Label>Quilometragem</Label>

@@ -13,6 +13,7 @@ const vehicleUpdateSchema = z.object({
   mileageKm: z.coerce.number().int().optional(),
   price: z.coerce.number().optional(),
   costPrice: z.coerce.number().optional().nullable(),
+  variableExpenses: z.coerce.number().optional().nullable(),
   transmission: z.enum(["MANUAL", "AUTOMATIC", "CVT", "AUTOMATED"]).optional(),
   fuel: z.enum(["FLEX", "GASOLINE", "ETHANOL", "DIESEL", "HYBRID", "ELECTRIC"]).optional(),
   color: z.string().optional(),

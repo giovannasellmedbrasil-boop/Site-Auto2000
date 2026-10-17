@@ -367,6 +367,7 @@ export interface DashboardData {
     sales: KpiValue;
     revenue: KpiValue;
     avgTicket: number | null;
+    profit: KpiValue;
   };
   funnel: FunnelStage[];
   bottleneck: { fromLabel: string; toLabel: string; conversionPct: number | null } | null;
@@ -485,6 +486,19 @@ export async function getDashboardData(filters: DashboardFilters): Promise<Dashb
   const salesKpi = buildKpi(periodSales.length, prevPeriodSales.length);
   const revenueKpi = buildKpi(sum(periodSales.map((s) => s.finalPrice)), sum(prevPeriodSales.map((s) => s.finalPrice)));
   const avgTicket = periodSales.length > 0 ? revenueKpi.value / periodSales.length : null;
+
+  // Lucro = faturamento do período menos o que a loja gastou comprando os
+  // carros que foram vendidos nesse período (preço de custo + gastos
+  // variáveis de cada veículo) — carro sem custo cadastrado conta como 0,
+  // nunca inventado.
+  const acquisitionCostOf = (sales: RealizedSale[]) =>
+    sum(
+      sales.map((s) => {
+        const vehicle = vehiclesById.get(s.vehicleId);
+        return (vehicle?.costPrice ?? 0) + (vehicle?.variableExpenses ?? 0);
+      })
+    );
+  const profitKpi = buildKpi(revenueKpi.value - acquisitionCostOf(periodSales), revenueKpi.previous - acquisitionCostOf(prevPeriodSales));
 
   const funnel: FunnelStage[] = [
     { key: "leads", label: "Leads", count: leadsKpi.value, conversionFromPrev: null },
@@ -783,6 +797,7 @@ export async function getDashboardData(filters: DashboardFilters): Promise<Dashb
     sales: salesKpi,
     revenue: revenueKpi,
     avgTicket,
+    profit: profitKpi,
   };
 
   const siteVisitors = await countUniqueVisitors(new Date(period.from), new Date(period.to));

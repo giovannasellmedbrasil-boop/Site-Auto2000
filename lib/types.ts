@@ -46,7 +46,8 @@ export interface Vehicle {
   modelYear: number;
   mileageKm: number;
   price: number;
-  costPrice?: number | null; // interno — nunca renderizado no frontend público
+  costPrice?: number | null; // interno — valor pago na compra do carro — nunca renderizado no frontend público
+  variableExpenses?: number | null; // interno — gastos variáveis (preparação, funilaria, documentação etc.) — nunca renderizado no frontend público
   transmission: Transmission;
   fuel: FuelType;
   color: string;

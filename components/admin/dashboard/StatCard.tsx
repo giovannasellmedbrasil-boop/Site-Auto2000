@@ -11,6 +11,7 @@ import {
   DollarSign,
   Receipt,
   Globe,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -29,6 +30,7 @@ const ICONS: Record<string, LucideIcon> = {
   "dollar-sign": DollarSign,
   receipt: Receipt,
   globe: Globe,
+  wallet: Wallet,
 };
 
 export function StatCard({

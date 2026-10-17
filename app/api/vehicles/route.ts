@@ -13,6 +13,7 @@ const vehicleInputSchema = z.object({
   mileageKm: z.coerce.number().int().min(0),
   price: z.coerce.number().min(0),
   costPrice: z.coerce.number().min(0).optional().nullable(),
+  variableExpenses: z.coerce.number().min(0).optional().nullable(),
   transmission: z.enum(["MANUAL", "AUTOMATIC", "CVT", "AUTOMATED"]),
   fuel: z.enum(["FLEX", "GASOLINE", "ETHANOL", "DIESEL", "HYBRID", "ELECTRIC"]),
   color: z.string().min(1),
